@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace ExceptionHandlingExercise
 {
@@ -36,13 +37,26 @@ namespace ExceptionHandlingExercise
                 // in the scope of your catch you can use the following, 
                 
                     //Console.WriteLine($"Unable to Parse '{character}'"); //character will be the name of each item in your collection
-                
-            
 
-            //foreach (var num in numbers)
-            //{
-            //    Console.WriteLine(num);
-            //}
+            char[] arr = { '0', '1', '2', 'S','3', '4', '5', 'V', 'I' };
+
+            List<int> numbers = new List<int>();
+
+            string str = "";
+
+            foreach (var num in arr)
+            {
+                try
+                {
+                    int store = int.Parse(num.ToString());
+                    numbers.Add(store);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine($"Unable to Parse '{num}'");
+                    Console.WriteLine(string.Join(", ", numbers));
+                }
+            }
         }
     }
 }
